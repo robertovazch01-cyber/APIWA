@@ -6,12 +6,12 @@ const verificar = (req, res) => {
         var challenge = req.query ["hub.challenge"];
 
         if (challenge != null && token != null && token == tokenRV) {
-            re.send (challenge);
+            res.send (challenge);
         } else {
             res.status(400).send();
         }
 
-        req.send (challenge);
+        res.send (challenge);
 
         console.log(req);
        
