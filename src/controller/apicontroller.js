@@ -5,6 +5,8 @@ const verificar = (req, res) => {
         var token = req.query ["hub.verify_token"];
         var challenge = req.query ["hub.challenge"];
 
+        console.log(req.body);
+
         if (challenge != null && token != null && token == tokenRV) {
             res.send (challenge);
         } else {
