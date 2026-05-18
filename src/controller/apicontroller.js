@@ -5,12 +5,12 @@ const verificar = (req, res) => {
         var token = req.query ["hub.verify_token"];
         var challenge = req.query ["hub.challenge"];
 
-        if (challenge != null && token != null && token === RVNODEJSMETA) {
+        if (challenge != null && token != null && token === tokenRV) {
             re.send (challenge);
         } else {
             res.status(400).send();
         }
-        
+
         req.send (challenge);
 
         console.log(req);
