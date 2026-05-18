@@ -1,6 +1,19 @@
 const verificar = (req, res) => {
-    res.send('Verificado');
-    console.log('Verificado en consola');
+
+    try {
+        var tokenRV = "RVNODEJSMETA" ;
+        var token = req.query ["hub.verify_token"];
+        var challenge = req.query ["hub.challenge"];
+
+        req.send (challenge);
+
+        console.log(req);
+       
+    }catch (e) {
+       
+        res.status(400).send();
+    }
+ 
 }
 
 const recibir = (req, res) => {
