@@ -1,35 +1,34 @@
 const verificar = (req, res) => {
 
     try {
+        var tokenRV = "RVNODEJSMETA" ;
+        var token = req.query ["hub.verify_token"];
+        var challenge = req.query ["hub.challenge"];
 
-        console.log("ENTRO A VERIFICAR");
-
-        const tokenRV = "RVNODEJSMETA";
-        const token = req.query["hub.verify_token"];
-        const challenge = req.query["hub.challenge"];
-
-        console.log(req.query);
+       
 
         if (challenge != null && token != null && token == tokenRV) {
-
-            console.log("TOKEN CORRECTO");
-
-            return res.send(challenge);
-
+            res.send (challenge);
         } else {
-
-            console.log("TOKEN INCORRECTO");
-
-            return res.status(400).send();
-
+            res.status(400).send();
         }
 
-    } catch (e) {
+        res.send (challenge);
 
-        console.log("ERROR:", e);
-
-        return res.status(400).send();
-
+        console.log(req.body);
+       
+    }catch (e) {
+       
+        res.status(400).send();
     }
+ 
+}
 
+const recibir = (req, res) => {
+    res.send('Recibido');
+    console.log('Recibido en consola');
+}
+
+module.exports = {
+    verificar, recibir
 }
