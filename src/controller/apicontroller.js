@@ -13,7 +13,7 @@ const verificar = (req, res) => {
 
         res.send (challenge);
 
-        console.log(req);
+        console.log(req.body);
        
     }catch (e) {
        
