@@ -27,6 +27,7 @@ const verificar = (req, res) => {
 const recibir = (req, res) => {
     console.log(req);
     res.send('EVENT_RECIEVED');
+}
 
 module.exports = {
     verificar, recibir
