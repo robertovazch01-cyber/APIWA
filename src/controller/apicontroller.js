@@ -25,8 +25,8 @@ const verificar = (req, res) => {
 }
 
 const recibir = (req, res) => {
-    res.send('Recibido');
-    console.log('Recibido en consola');
+    res.send('Recibido en consola.');
+    console.log('Recibido en consola.');
 }
 
 module.exports = {
