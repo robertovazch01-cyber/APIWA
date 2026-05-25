@@ -1,27 +1,39 @@
 const verificar = (req, res) => {
 
     try {
-        var tokenRV = "RVNODEJSMETA" ;
-        var token = req.query ["hub.verify_token"];
-        var challenge = req.query ["hub.challenge"];
 
-       
+        console.log("META VERIFICANDO WEBHOOK");
+        console.log(req.query);
 
-        if (challenge != null && token != null && token == tokenRV) {
+        var tokenRV = "RVNODEJSMETA";
+        var token = req.query["hub.verify_token"];
+        var challenge = req.query["hub.challenge"];
+
+        if (challenge != null && token == tokenRV) {
+
+            console.log("TOKEN CORRECTO");
+            console.log("CHALLENGE:", challenge);
+
             res.send(challenge);
+
         } else {
-            res.status(400).send();
+
+            console.log("TOKEN INCORRECTO");
+
+            res.sendStatus(400);
+
         }
 
+    } catch (e) {
 
-        console.log(req.body);
-       
-    }catch (e) {
+        console.log("ERROR:");
+        console.log(e);
 
-       console.log(e);
-        res.status(400).send();
+        res.sendStatus(400);
+
     }
- 
+
+
 }
 
 const recibir = (req, res) => {
