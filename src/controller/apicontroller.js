@@ -46,6 +46,7 @@ const recibir = (req, res) => {
         console.log(e);  
         res.send("EVENT_RECEIVED");
     }
+}
 module.exports = {
     verificar, recibir
 }
