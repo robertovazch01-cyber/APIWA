@@ -38,11 +38,11 @@ const recibir = (req, res) => {
        var objetoMensaje = value["messages"][0];
 
         console.log(objetoMensaje);
-        res.sendStatus("EVENT_RECEIVED");
-        
+        res.send("EVENT_RECEIVED");
+
     } catch(e) {
         console.log(e);
-        res.sendStatus("EVENT_RECEIVED");
+        res.send("EVENT_RECEIVED");
     }
     console.log(e);
 }
