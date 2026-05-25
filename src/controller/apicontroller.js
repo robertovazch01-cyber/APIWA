@@ -32,6 +32,7 @@ const verificar = (req, res) => {
         res.sendStatus(400);
 
     }
+}
 
 const recibir = (req, res) => {
 
@@ -42,7 +43,7 @@ const recibir = (req, res) => {
 }
 
 
-}
+
 
 module.exports = {
     verificar,
