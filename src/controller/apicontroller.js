@@ -37,10 +37,15 @@ const verificar = (req, res) => {
 }
 
 const recibir = (req, res) => {
-    console.log(req.body);
-    res.send('EVENT_RECIEVED');
-}
+    try {
+        var entry = (req.body["entry"])[0];   
+        var changes = (entry["changes"])[0];
+        console.log(changes);
 
+    } catch (e) {
+        console.log(e);  
+        res.send("EVENT_RECEIVED");
+    }
 module.exports = {
     verificar, recibir
 }
