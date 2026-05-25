@@ -40,20 +40,22 @@ const recibir = (req, res) => {
 
     try {
 
-        console.log("BODY COMPLETO:");
+        console.log("META ENVIO:");
         console.log(JSON.stringify(req.body, null, 2));
 
-        res.send("EVENT_RECEIVED");
+        res.sendStatus(200);
 
     } catch (e) {
 
         console.log(e);
 
-        res.send("EVENT_RECEIVED");
+        res.sendStatus(200);
 
     }
 
-}
+}git add .
+git commit -m "fix meta webhook body"
+git push
 
 module.exports = {
     verificar,
