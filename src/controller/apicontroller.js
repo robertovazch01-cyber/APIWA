@@ -53,9 +53,7 @@ const recibir = (req, res) => {
 
     }
 
-}git add .
-git commit -m "fix meta webhook body"
-git push
+}
 
 module.exports = {
     verificar,
