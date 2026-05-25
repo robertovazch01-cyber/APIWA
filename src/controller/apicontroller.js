@@ -8,24 +8,24 @@ const verificar = (req, res) => {
        
 
         if (challenge != null && token != null && token == tokenRV) {
-            res.send (challenge);
+            res.send(challenge);
         } else {
             res.status(400).send();
         }
 
-        res.send (challenge);
 
         console.log(req.body);
        
     }catch (e) {
-       
+
+       console.log(e);
         res.status(400).send();
     }
  
 }
 
 const recibir = (req, res) => {
-    console.log(req);
+    console.log(req.body);
     res.send('EVENT_RECIEVED');
 }
 
