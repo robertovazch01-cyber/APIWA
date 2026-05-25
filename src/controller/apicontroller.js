@@ -40,25 +40,13 @@ const recibir = (req, res) => {
 
     try {
 
-        var entry = req.body["entry"][0];
-        var changes = entry["changes"][0];
-        var value = changes["value"];
-        var objetoMensaje = value["messages"][0];
-
-        console.log("MENSAJE:");
-        console.log(objetoMensaje);
-
-        console.log("NUMERO:");
-        console.log(objetoMensaje["from"]);
-
-        console.log("TEXTO:");
-        console.log(objetoMensaje["text"]["body"]);
+        console.log("BODY COMPLETO:");
+        console.log(JSON.stringify(req.body, null, 2));
 
         res.send("EVENT_RECEIVED");
 
     } catch (e) {
 
-        console.log("ERROR:");
         console.log(e);
 
         res.send("EVENT_RECEIVED");
