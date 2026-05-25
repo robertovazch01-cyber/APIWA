@@ -38,20 +38,11 @@ const verificar = (req, res) => {
 
 const recibir = (req, res) => {
 
-    try {
+    console.log("===============");
+    console.log("META SI ENTRO");
+    console.log("===============");
 
-        console.log("META ENVIO:");
-        console.log(JSON.stringify(req.body, null, 2));
-
-        res.sendStatus(200);
-
-    } catch (e) {
-
-        console.log(e);
-
-        res.sendStatus(200);
-
-    }
+    res.sendStatus(200);
 
 }
 
