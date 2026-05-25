@@ -37,16 +37,37 @@ const verificar = (req, res) => {
 }
 
 const recibir = (req, res) => {
+
     try {
-        var entry = (req.body["entry"])[0];   
-        var changes = (entry["changes"])[0];
-        console.log(changes);
+
+        var entry = req.body["entry"][0];
+        var changes = entry["changes"][0];
+        var value = changes["value"];
+        var objetoMensaje = value["messages"][0];
+
+        console.log("MENSAJE:");
+        console.log(objetoMensaje);
+
+        console.log("NUMERO:");
+        console.log(objetoMensaje["from"]);
+
+        console.log("TEXTO:");
+        console.log(objetoMensaje["text"]["body"]);
+
+        res.send("EVENT_RECEIVED");
 
     } catch (e) {
-        console.log(e);  
+
+        console.log("ERROR:");
+        console.log(e);
+
         res.send("EVENT_RECEIVED");
+
     }
+
 }
+
 module.exports = {
-    verificar, recibir
+    verificar,
+    recibir
 }
