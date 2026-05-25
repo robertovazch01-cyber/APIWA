@@ -22,6 +22,7 @@ const verificar = (req, res) => {
     } catch (e) {
 
         console.log(e);
+
         res.sendStatus(400);
 
     }
@@ -31,24 +32,28 @@ const verificar = (req, res) => {
 const recibir = (req, res) => {
 
     try {
-        
-       var entry = (req.body["entry"])[0];
-       var changes = (entry["changes"])[0];
-       var value = changes["value"];
-       var objetoMensaje = value["messages"][0];
 
+        var entry = req.body["entry"][0];
+        var changes = entry["changes"][0];
+        var value = changes["value"];
+        var objetoMensaje = value["messages"][0];
+
+        console.log("MENSAJE:");
         console.log(objetoMensaje);
+
         res.send("EVENT_RECEIVED");
 
-    } catch(e) {
+    } catch (e) {
+
         console.log(e);
+
         res.send("EVENT_RECEIVED");
+
     }
-    console.log(e);
+
 }
 
 module.exports = {
     verificar,
     recibir
 }
-
