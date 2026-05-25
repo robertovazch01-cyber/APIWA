@@ -38,11 +38,32 @@ const verificar = (req, res) => {
 
 const recibir = (req, res) => {
 
-    console.log("===============");
-    console.log("META SI ENTRO");
-    console.log("===============");
+    try {
 
-    res.sendStatus(200);
+        const entry = req.body.entry[0];
+        const changes = entry.changes[0];
+        const value = changes.value;
+
+        const contacto = value.contacts[0];
+        const mensaje = value.messages[0];
+
+        const nombre = contacto.profile.name;
+        const numero = mensaje.from;
+        const texto = mensaje.text.body;
+
+        console.log("NOMBRE:", nombre);
+        console.log("NUMERO:", numero);
+        console.log("MENSAJE:", texto);
+
+        res.sendStatus(200);
+
+    } catch (e) {
+
+        console.log(e);
+
+        res.sendStatus(200);
+
+    }
 
 }
 
