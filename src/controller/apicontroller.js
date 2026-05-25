@@ -1,29 +1,52 @@
 const verificar = (req, res) => {
 
-    console.log("GET DE META");
+    try {
 
-    const tokenRV = "RVNODEJSMETA";
-    const token = req.query["hub.verify_token"];
-    const challenge = req.query["hub.challenge"];
+        var tokenRV = "RVNODEJSMETA";
+        var token = req.query["hub.verify_token"];
+        var challenge = req.query["hub.challenge"];
 
-    if (token === tokenRV) {
-        return res.status(200).send(challenge);
+        console.log("GET WEBHOOK");
+        console.log(req.query);
+
+        if (challenge != null && token != null && token == tokenRV) {
+
+            res.send(challenge);
+
+        } else {
+
+            res.sendStatus(400);
+
+        }
+
+    } catch (e) {
+
+        console.log(e);
+        res.sendStatus(400);
+
     }
-
-    return res.sendStatus(403);
 
 }
 
 const recibir = (req, res) => {
 
-    console.log("POST RECIBIDO");
-    console.log("HEADERS:");
-    console.log(req.headers);
+    try {
+        var entry = (req.body ["entry"])[0];
+        var changes = (entry ["changes"])[0];
+        var value = changes ["value"];
+        var ObjetoMensajes = (value ["messages"])[0];
 
-    console.log("BODY:");
-    console.log(JSON.stringify(req.body, null, 2));
+        console.log("ObjetoMensajes");
+        console.log(JSON.stringify(req.body, null, 2));
 
-    return res.sendStatus(200);
+        res.sendStatus("EVENT_RECEIVED");
+
+    } catch (e) {
+
+        console.log(e);
+        res.sendStatus("EVENT_RECEIVED");
+
+    }
 
 }
 
@@ -31,3 +54,4 @@ module.exports = {
     verificar,
     recibir
 }
+
